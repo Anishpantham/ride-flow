@@ -1,0 +1,124 @@
+{
+  "identity": {
+    "name": "RideFlow",
+    "archetype": "The Performance Pro",
+    "vibe": "Kinetic, Transparent, Direct",
+    "mission": "Empower drivers and riders to find the fair price instantly."
+  },
+  "typography": {
+    "headings": {
+      "family": "Manrope",
+      "weights": ["700", "800"],
+      "usage": "Headings, Price Displays, negotiation counters",
+      "cdn_import": "@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap');"
+    },
+    "body": {
+      "family": "DM Sans",
+      "weights": ["400", "500", "700"],
+      "usage": "Body text, UI labels, chat messages",
+      "cdn_import": "@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap');"
+    }
+  },
+  "colors": {
+    "primary": {
+      "name": "Volt Blue",
+      "hex": "#007AFF",
+      "usage": "Primary actions, Confirm buttons, Active states"
+    },
+    "secondary": {
+      "name": "Electric Blaze",
+      "hex": "#FF3B30",
+      "usage": "Cancel actions, Urgent notifications, 'High Fare' warnings"
+    },
+    "neutral": {
+      "light": {
+        "background": "#FFFFFF",
+        "surface": "#F5F5F7",
+        "text_primary": "#0A0A0A",
+        "text_secondary": "#666666"
+      },
+      "dark": {
+        "background": "#0A0A0A",
+        "surface": "#1C1C1E",
+        "text_primary": "#FFFFFF",
+        "text_secondary": "#A1A1AA"
+      }
+    },
+    "status": {
+      "success": "#34C759",
+      "warning": "#FF9500",
+      "error": "#FF3B30"
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": {
+      "light": "bg-white/80 backdrop-blur-xl border border-white/20 shadow-lg",
+      "dark": "bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl"
+    },
+    "shadows": {
+      "card": "shadow-[0_8px_30px_rgb(0,0,0,0.12)]",
+      "floating": "shadow-[0_20px_50px_rgb(0,0,0,0.25)]"
+    },
+    "borders": {
+      "radius": "rounded-2xl",
+      "width": "border-1"
+    }
+  },
+  "layout": {
+    "grid_system": "Mobile-first. Use 'Bento' style grids for dashboard stats. Map always takes full screen z-0.",
+    "spacing": "Generous. Use p-6 or p-8 for containers. Gap-4 for lists.",
+    "containers": {
+      "negotiation_card": "Fixed bottom sheet on mobile, floating card on desktop top-right.",
+      "map_overlay": "Absolute positioned elements with z-10."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#007AFF] hover:bg-[#0062CC] text-white rounded-full font-bold px-8 py-4 transition-transform active:scale-95",
+      "secondary": "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-full font-medium px-6 py-3 hover:bg-zinc-200 dark:hover:bg-zinc-700",
+      "negotiate": "bg-black dark:bg-white text-white dark:text-black rounded-full font-bold px-8 py-4 border-2 border-transparent hover:border-[#007AFF] transition-all"
+    },
+    "inputs": {
+      "style": "bg-transparent border-b-2 border-zinc-200 dark:border-zinc-800 focus:border-[#007AFF] outline-none px-0 py-4 text-xl font-medium transition-colors rounded-none",
+      "price_input": "text-4xl font-extrabold text-center border-none bg-transparent focus:ring-0 p-0 w-full"
+    },
+    "cards": {
+      "driver_card": "bg-white dark:bg-zinc-900 rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-zinc-100 dark:border-zinc-800",
+      "ride_request": "bg-white dark:bg-zinc-900 rounded-3xl p-6 shadow-xl border border-zinc-100 dark:border-zinc-800"
+    }
+  },
+  "images": {
+    "hero_bg": "https://images.unsplash.com/photo-1762997222467-dced65a8a354?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHx1cmJhbiUyMGNpdHklMjBzdHJlZXQlMjB0YXhpfGVufDB8fHx8MTc2OTUyMDI2M3ww&ixlib=rb-4.1.0&q=85",
+    "driver_persona": "https://images.pexels.com/photos/6816993/pexels-photo-6816993.jpeg",
+    "passenger_persona": "https://images.unsplash.com/photo-1764636098038-091b637738ee?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxOTB8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBsb29raW5nJTIwYXQlMjBwaG9uZSUyMGNpdHl8ZW58MHx8fHwxNzY5NTIwMjY4fDA&ixlib=rb-4.1.0&q=85",
+    "car_asset": "https://images.pexels.com/photos/33385640/pexels-photo-33385640.jpeg"
+  },
+  "icons": {
+    "library": "lucide-react",
+    "style": "Stroke width 2px, rounded caps."
+  },
+  "motion": {
+    "transitions": "transition-all duration-300 ease-out",
+    "hover": "hover:-translate-y-1 hover:shadow-lg",
+    "negotiation_pop": "animate-in zoom-in-95 duration-200"
+  },
+  "instructions_to_main_agent": [
+    "1. THEME: Implement a 'ThemeToggle' component immediately. Default to system preference but allow manual override.",
+    "2. MAP: Use 'react-map-gl' or a simple Google Maps iframe wrapper if API key is missing (mock it). The map must be the background of the 'Active Ride' and 'Home' screens.",
+    "3. NEGOTIATION UI: This is the critical feature. It must look like a 'Game'. Large numbers, clear 'Accept' vs 'Counter' buttons. Use a bottom sheet on mobile.",
+    "4. CHAT: The chat should overlay the map, not hide it. Use a semi-transparent background.",
+    "5. ROLES: Strictly separate Driver and Passenger views. They should feel like different apps but part of the same brand.",
+    "6. MOCK DATA: Pre-fill the map with 'Ghost Cars' (moving markers) to make it feel alive.",
+    "7. DO NOT use gradients for backgrounds. Use solid colors or the map.",
+    "8. Use 'sonner' for all notifications (Ride accepted, New offer received)."
+  ],
+  "universal_guidelines": [
+    "Don't make generic centered layouts.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "Every interaction needs micro-animations.",
+    "Use 2-3x more spacing than feels comfortable.",
+    "Subtle grain textures, noise overlays, custom cursors.",
+    "All interactive elements MUST include data-testid attribute."
+  ]
+}
