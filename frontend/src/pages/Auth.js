@@ -52,6 +52,7 @@ export const Auth = () => {
         navigate(role === 'driver' ? '/driver' : '/passenger');
       }
     } catch (error) {
+      console.log(`This is the error: \n ${error}`);
       toast.error(error.response?.data?.detail || 'Authentication failed');
     } finally {
       setLoading(false);
@@ -110,7 +111,7 @@ export const Auth = () => {
                   id="phone"
                   data-testid="phone-input"
                   type="tel"
-                  placeholder="+1 234 567 8900"
+                  placeholder="12345-67890"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required
@@ -164,7 +165,7 @@ export const Auth = () => {
               id="password"
               data-testid="password-input"
               type="password"
-              placeholder="••••••••"
+              placeholder="Password"
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               required

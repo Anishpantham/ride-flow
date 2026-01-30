@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const API = "http://127.0.0.1:8000/api";
+
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -18,13 +18,11 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (token) {
-      fetchUser();
-    } else {
-      setLoading(false);
-    }
-  }, [token]);
+  const logout = useCallback(() => {
+    setToken(null);
+    setUser(null);
+    localStorage.removeItem('token');
+  }, []);
 
   const fetchUser = async () => {
     try {
@@ -39,6 +37,16 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      fetchUser();
+    } else {
+      setLoading(false);
+    }
+  }, [token, fetchUser]);
+
+  
 
   const register = async (data) => {
     const response = await axios.post(`${API}/auth/register`, data);
@@ -56,11 +64,11 @@ export const AuthProvider = ({ children }) => {
     return response.data;
   };
 
-  const logout = () => {
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem('token');
-  };
+  // const logout = () => {
+  //   setToken(null);
+  //   setUser(null);
+  //   localStorage.removeItem('token');
+  // };
 
   return (
     <AuthContext.Provider value={{ user, token, loading, register, login, logout, fetchUser }}>
