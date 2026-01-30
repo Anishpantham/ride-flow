@@ -146,6 +146,7 @@ async def register(request: RegisterRequest):
         "is_active": True,
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
+    print(user_doc)
     
     await db.users.insert_one(user_doc)
     
